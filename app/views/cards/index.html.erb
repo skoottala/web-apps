@@ -1,0 +1,70 @@
+<%
+    
+    card1= rand(1..13)
+    card2= rand(1..4)
+    if card1= 11
+         card1="jack"
+    elsif card1 =12
+        card1="queen"
+    elsif card1=13
+        card1="king"
+    end
+    
+    if card2 = 1
+        card2="clubs"
+    elsif card2=2
+        card2="diamonds"
+    elsif card2=3
+        card2 ="hearts"
+    else 
+        card2="spades"
+    end
+%>
+
+<p>
+ <%=card1%>
+ <%=card2%>
+</p>
+
+<h1>Pick a card</h1>
+<p>
+    <img src="/images/cards/<%=card1%><%="_of_"%><%=card2%>.svg">
+</p>
+<p>
+
+
+ <p>
+    <a href="/card">Pick Again!</a>
+</p>
+
+
+<%
+    ranks= [2,3,4,5,6,7,8,9,10,"jack","queen","king","ace"]
+    suits= ["clubs","diamonds","hearts","spades"]
+
+    rank1= ranks.sample
+    suit1=suits.sample
+    rank2=ranks.sample
+    suit2=suits.sample
+    rank3= ranks.sample
+    suit3=suits.sample
+    rank4=ranks.sample
+    suit4=suits.sample
+    rank5= ranks.sample
+    suit5=suits.sample
+
+    deck = [] #deck is empty
+    for rank in ranks
+        for suit in suits
+            deck << "#{rank}_of_#{suit}"
+        end
+    end
+    shuffled_deck= deck.shuffle
+    hand= shuffled_deck[0,5]
+%>
+
+<ul>
+    <% for card in hand %>
+        <img src="/images/cards/<%=card%>.svg">
+    <%end%>
+</ul>
